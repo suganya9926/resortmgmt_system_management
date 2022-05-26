@@ -46,66 +46,6 @@ class ServiceAdmin(admin.ModelAdmin):
     list_display = ['services', 'name', 'mobilenumber', 'idproof', 'proof', 'address', 'car_number', 'choices', 'favors','amount', 'count', 'mydatetime']
 
 
-class Singlebedroom(models.Model):
-    services = models.ForeignKey(Service, on_delete=models.CASCADE, null=True)
-    count = models.IntegerField()
-    amount = models.IntegerField(default=6000)
-
-    def __str__(self):
-        return f'{self.services}-{self.count}-{self.amount}'
-
-
-class Doublebedroom(models.Model):
-    services = models.ForeignKey(Service, on_delete=models.CASCADE, null=True)
-    count = models.IntegerField()
-    amount = models.IntegerField(default=8000)
-
-    def __str__(self):
-        return f'{self.services}-{self.count}-{self.amount}'
-
-
-class VIPbedroom(models.Model):
-    services = models.ForeignKey(Service, on_delete=models.CASCADE, null=True)
-    count = models.IntegerField()
-    amount = models.IntegerField(default=10000)
-
-    def __str__(self):
-        return f'{self.services}-{self.count}-{self.amount}'
-
-
-class Carparking(models.Model):
-    services = models.ForeignKey(Service, on_delete=models.CASCADE, null=True)
-    car_number = models.CharField(max_length=30)
-    amount = models.IntegerField(default=2000)
-
-    def __str__(self):
-        return f'{self.services}-{self.car_number}-{self.amount}'
-
-
-class Eclecticfood(models.Model):
-    mychoices = [('South Indian', 'South Indian'), ('North Indian', 'North Indian'), ('Chinese', 'Chinese'),
-                 ('Italian', 'Italian'),
-                 ('Pan Asian', 'Pan Asian'), ('European', 'European'), ('Japanese', 'Japanese'),
-                 ('Casual Electic', 'Casual Electic'),
-                 ('Meditterranean', 'Meditterranean')]
-    choices = models.CharField(choices=mychoices, max_length=30)
-    services = models.ForeignKey(Service, on_delete=models.CASCADE, null=True)
-    amount = models.IntegerField(default=6000)
-
-    def __str__(self):
-        return f'{self.choices}-{self.services}-{self.amount}'
-
-
-class Roomservices(models.Model):
-    myfavors = [('Centralized', 'Centralized'), ('Decentralized', 'Decentralized')]
-    favors = models.CharField(choices=myfavors, max_length=30)
-    services = models.ForeignKey(Service, on_delete=models.CASCADE, null=True)
-    amount = models.IntegerField(default=4000)
-
-    def __str__(self):
-        return f'{self.favors}-{self.services}-{self.amount}'
-
-
 class Payment(models.Model):
     mypayouts = [('Bank Account', 'Bank Account'), ('Google pay', 'Google pay'), ('Paytm', 'Paytm'),
                  ('Phonepe', 'Phonepe'),
@@ -131,33 +71,4 @@ class PaymentAdmin(admin.ModelAdmin):
 
 
 
-class Bankaccount(models.Model):
-    payments = models.ForeignKey(Payment, on_delete=models.CASCADE, null=True)
-
-
-class Googlepay(models.Model):
-    payments = models.ForeignKey(Payment, on_delete=models.CASCADE, null=True)
-
-
-class Paytm(models.Model):
-    payments = models.ForeignKey(Payment, on_delete=models.CASCADE, null=True)
-
-
-class Phonepe(models.Model):
-    payments = models.ForeignKey(Payment, on_delete=models.CASCADE, null=True)
-
-
-class Paypal(models.Model):
-    payments = models.ForeignKey(Payment, on_delete=models.CASCADE, null=True)
-
-
-class Creditcard(models.Model):
-    payments = models.ForeignKey(Payment, on_delete=models.CASCADE, null=True)
-
-
-class Debitcard(models.Model):
-    payments = models.ForeignKey(Payment, on_delete=models.CASCADE, null=True)
-
-class Cash(models.Model):
-    payments = models.ForeignKey(Payment, on_delete=models.CASCADE, null=True)
 
