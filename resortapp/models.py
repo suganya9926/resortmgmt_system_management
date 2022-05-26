@@ -46,6 +46,7 @@ class ServiceAdmin(admin.ModelAdmin):
     list_display = ['services', 'name', 'mobilenumber', 'idproof', 'proof', 'address', 'car_number', 'choices', 'favors','amount', 'count', 'mydatetime']
 
 
+
 class Payment(models.Model):
     mypayouts = [('Bank Account', 'Bank Account'), ('Google pay', 'Google pay'), ('Paytm', 'Paytm'),
                  ('Phonepe', 'Phonepe'),
@@ -68,6 +69,7 @@ class Payment(models.Model):
 
 class PaymentAdmin(admin.ModelAdmin):
     list_display = ['name', 'mobilenumber', 'address', 'account_number', 'UPI_id', 'email', 'credit_card_number', 'debit_card_number', 'amount', 'mydatetime']
+
 
 
 
